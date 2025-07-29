@@ -71,6 +71,36 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CentOS8虚拟机安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/29/CentOS8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2025-07-29T02:30:50.162Z" itemprop="datePublished">2025-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="CentOS-8虚拟机安装"><a href="#CentOS-8虚拟机安装" class="headerlink" title="CentOS 8虚拟机安装"></a>CentOS 8虚拟机安装</h2><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>​	1.CentOS 8的iso文件</p>
+<p>​	2.VMware Workstation软件</p>
+<h5 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/29/CentOS8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/" data-id="cmdnye2vw0000b0lt5e40evmw" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-配置picgo图床" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" class="article-date">
@@ -96,13 +126,12 @@
 <p>新仓库名为Pictures</p>
 <p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728220259905.png"></p>
 <h5 id="3-生成tokens"><a href="#3-生成tokens" class="headerlink" title="3.生成tokens"></a>3.生成tokens</h5><p>Github头像-&gt;Settings-&gt;Developer Settings-&gt;Personal access tokens-&gt;Tokens(classic)-&gt;Generate new access Token(classic)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728220224071.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728152404869.png"></p>
 <p>点击<code>Generate token</code>注意这里的token只会出现一次，最好复制后在微信发给自己</p>
 <h5 id="4-配置picgo"><a href="#4-配置picgo" class="headerlink" title="4.配置picgo"></a>4.配置picgo</h5><p>打开软件，<code>图床设置-&gt;Github</code>，填写配置信息，点击确定并<code>设为默认图床</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728220814292.png"><br>图床名称	默认<br>仓库名	your-username&#x2F;blog-images<br>分支名	main 或 master，看你的仓库设置<br>Token	填入 GitHub 生成的 Token<br>存储路径（可选）	img&#x2F;（上传到该目录)<br>自定义域名	<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/[github%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]@main">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main</a></p>
 <p>PS：</p>
-<p>坑点1：自定义域名不要用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/用户名/仓库名@分支名</span><br></pre></td></tr></table></figure>
+<h5 id="坑点1：自定义域名不要用"><a href="#坑点1：自定义域名不要用" class="headerlink" title="坑点1：自定义域名不要用"></a>坑点1：自定义域名不要用</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/用户名/仓库名@分支名</span><br></pre></td></tr></table></figure>
 
 <p>很慢</p>
 <p>接下来安装picgo-plugin-github-plus插件</p>
@@ -122,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" data-id="cmdnwzrkd0001j4lt1y3sa06s" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" data-id="cmdnye2w20002b0lt46oq4x8t" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -183,7 +212,10 @@
 <p>然后进入C:\Users\用户名，在里面进入.ssh文件</p>
 <p>用记事本打开里面的id_rsa.pub,全选复制里面的代码</p>
 <p>然后打开github</p>
-<p>进入用户设置，找到SSH keys</p>
+<p>进入用户设置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250729105220769.png" alt="image-20250729105220769"></p>
+<p>找到SSH keys</p>
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250729105242714.png" alt="image-20250729105242714"></p>
 <p>新建SSH keys，名称随意，在下面粘贴代码，</p>
 <p>然后创建</p>
 <p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728152404869.png"></p>
@@ -202,7 +234,7 @@
 <p>安装自动部署发布工具</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728154202154.png" alt="image-20250728154202154"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728154202154.png"></p>
 <p>如果是第一次使用git的话会需要配置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br><span class="line">git config --global user.name &quot;你的名字&quot;</span><br></pre></td></tr></table></figure>
 
@@ -216,12 +248,12 @@
 
 <p>上传完成后访问<a target="_blank" rel="noopener" href="https://azyzlazyzl.github.io/">Hexo</a></p>
 <p>成功了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728155837230.png" alt="image-20250728155837230"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728123932639.png"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" data-id="cmdnwzrk90000j4lt583b5wue" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" data-id="cmdnye2w10001b0ltafdzhk7a" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -262,6 +294,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/07/29/CentOS8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/">(no title)</a>
