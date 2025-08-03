@@ -130,248 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" data-id="cmdvci4sr0000q8lt7x5wf0um" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux常用命令详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/30/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2025-07-30T10:54:05.441Z" itemprop="datePublished">2025-07-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Linux常用命令详解"><a href="#Linux常用命令详解" class="headerlink" title="Linux常用命令详解"></a>Linux常用命令详解</h2><h5 id="1-touch-创建空文件"><a href="#1-touch-创建空文件" class="headerlink" title="1.touch - 创建空文件"></a>1.touch - 创建空文件</h5><p>用途：创建新文件或更新文件时间戳。</p>
-<p>语法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> 文件名</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> file.txt 				<span class="comment">#创建空文件</span></span><br><span class="line"><span class="built_in">touch</span> file1.txt file2.txt 	<span class="comment">#批量创建</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="2-mkdir-创建目录"><a href="#2-mkdir-创建目录" class="headerlink" title="2.mkdir - 创建目录"></a>2.mkdir - 创建目录</h5><p>用途：创建新目录。</p>
-<p>语法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> [选项] 目录名</span><br></pre></td></tr></table></figure>
-
-
-<p>示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 			<span class="comment">#创建单层目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2 	<span class="comment">#递归创建嵌套目录（自动补全父目录）</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="3-rm-删除文件或目录"><a href="#3-rm-删除文件或目录" class="headerlink" title="3.rm - 删除文件或目录"></a>3.rm - 删除文件或目录</h5><p>用途：删除文件或目录（慎用！）。</p>
-<p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [选项] 文件或目录</span><br></pre></td></tr></table></figure>
-
-
-<p>常用选项：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> file.txt 		<span class="comment">#删除文件</span></span><br><span class="line"><span class="built_in">rm</span> -r <span class="built_in">dir</span>/			<span class="comment">#递归删除目录及其内容</span></span><br><span class="line"><span class="built_in">rm</span> -f file.txt 		<span class="comment">#强制删除（不提示确认）</span></span><br></pre></td></tr></table></figure>
-
-<p>警告： rm -rf &#x2F; 会删除整个系统，切勿尝试</p>
-<h5 id="4-cp-复制文件或目录"><a href="#4-cp-复制文件或目录" class="headerlink" title="4.cp - 复制文件或目录"></a>4.cp - 复制文件或目录</h5><p>用途：复制文件或目录到指定位置。</p>
-<p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [选项] 源文件 目标路径</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp file.txt backup/ 	#复制文件到目录</span><br><span class="line">cp -r dir1/ dir2/ 		#递归复制目录</span><br><span class="line">cp -f dir1 dir2 		#强制复制</span><br><span class="line">cp -i file.txt backup/ 	#覆盖前提示确</span><br></pre></td></tr></table></figure>
-
-<h5 id="5-mv-移动或重命名文件"><a href="#5-mv-移动或重命名文件" class="headerlink" title="5.mv - 移动或重命名文件"></a>5.mv - 移动或重命名文件</h5><p>用途：移动文件或目录，或修改名称</p>
-<p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 源文件 目标路径或名称</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv old.txt new.txt 		#重命名文件</span><br><span class="line">mv file.txt /backup/ 	#移动文件到目录</span><br></pre></td></tr></table></figure>
-
-<h5 id="6-查询命令-cat-less-tail-grep-find-（这四个命令都是对文件内容进行查询）"><a href="#6-查询命令-cat-less-tail-grep-find-（这四个命令都是对文件内容进行查询）" class="headerlink" title="6.查询命令 - cat less tail grep find （这四个命令都是对文件内容进行查询）"></a>6.查询命令 - cat less tail grep find （这四个命令都是对文件内容进行查询）</h5><h5 id="6-1-cat"><a href="#6-1-cat" class="headerlink" title="6.1 cat"></a>6.1 cat</h5><p>用途：用于快速查看、合并或创建文件内容。适合小文件，直接将内容输出到终端，无交互功能</p>
-<p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat filename 					#查看文件内容</span><br><span class="line">cat file1 file2 				#同时显示多个文件内容</span><br><span class="line">cat file1 file2 &gt; merged_file	#合并文件</span><br><span class="line">cat file1 &gt;&gt; file2 				#将file1内容追加到file2末尾</span><br></pre></td></tr></table></figure>
-
-<p>常用选项</p>
-<p>-n：显示行号（包括空行）</p>
-<p>-b：显示行号（忽略空行）</p>
-<p>-s：压缩连续空行为一行</p>
-<p>-E：在行尾显示 $ 符号</p>
-<h5 id="6-2-less"><a href="#6-2-less" class="headerlink" title="6.2  less"></a>6.2  less</h5><p>用途：提供用户交互式地滚动浏览文件，在 less 环境下，可以使用方向键或 Page Up&#x2F;Page Down 键来滚动浏</p>
-<p>览文件，按 q 键可以退出</p>
-<p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less filename</span><br></pre></td></tr></table></figure>
-
-<p>常用选项</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-N：显示行号</span><br><span class="line">-m：显示更详细的提示信息 （进度%）</span><br><span class="line">-E：在文件结束后自动退出</span><br><span class="line">-S：禁用自动换</span><br></pre></td></tr></table></figure>
-
-<p>高级技巧</p>
-<p>使用 less命令 来看cat -n 命令的输出 （管道符号的应用）</p>
-<p>所以我们利用 cat 和 less 的特点 将两个命令结合使用 用到了 管道符号“|”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">less 查看文件是从头查看 q退出查看 上线箭头可以逐行滚动</span><br><span class="line">[root@localhost test5]# cat -n /etc/passwd | less</span><br><span class="line">管道符号的作用：前一条命令的输出 作为后一条命令的输入</span><br></pre></td></tr></table></figure>
-
-<p>搜索内容</p>
-<p>在 less 中，可以使用 &#x2F; 字符后接搜索模式来向前搜索内容，或者使用 ? 后接搜索模式来向后</p>
-<p>搜索内容。例如，要在文件中搜索 “example”，可以输入 &#x2F;example 并按回车键。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p>查看多个文件</p>
-<p>less 可以同时打开多个文件。只需要在命令行中列出所有的文件名即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less file1 file2 file3</span><br></pre></td></tr></table></figure>
-
-<p>在 less 中，可以使用 :n 命令跳转到下一个文件，使用 :p 命令跳转到上一个文件。</p>
-<h5 id="6-3-tail"><a href="#6-3-tail" class="headerlink" title="6.3 tail"></a>6.3 tail</h5><p>用途：用于查看文件末尾内容，默认显示最后10行。常用于实时监控日志更新。</p>
-<p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tail filename 		#显示文件最后10行</span><br><span class="line">tail -n 20 filename #显示最后20行</span><br></pre></td></tr></table></figure>
-
-<p>常用选项</p>
-<p>-n : 指定显示的行数</p>
-<p>-f  : 实时追踪文件变化（常用于监控日志）</p>
-<h5 id="6-4-grep"><a href="#6-4-grep" class="headerlink" title="6.4 grep"></a>6.4 grep</h5><p>用途：grep<strong>（Global Regular Expression Print）</strong>是 Linux 中强大的文本搜索工具，支持正则表达式，用于在文件或输入流中按模式匹配并输出符合条件的行。</p>
-<p>核心功能：快速过滤、定位文本内容。</p>
-<p>典型场景：日志分析、配置文件搜索、代码审查等</p>
-<p>语法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [选项] &quot;搜索模式&quot; 文件名huo</span><br></pre></td></tr></table></figure>
-
-<p>搜索模式：可以是普通字符串或正则表达式。</p>
-<p>支持多文件：可同时搜索多个文件或目录</p>
-<h5 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h5><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>说明</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-i</td>
-<td>忽略大小写</td>
-<td>grep -i “error” file</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>反向匹配（排除模式）</td>
-<td>grep -v “debug” file</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>显示匹配行的行号</td>
-<td>grep -n “warning” file</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>统计匹配行数</td>
-<td>grep -c “404” file</td>
-</tr>
-<tr>
-<td>-r &#x2F; -R</td>
-<td>递归搜索目录</td>
-<td>grep -r “config” &#x2F;etc&#x2F;</td>
-</tr>
-<tr>
-<td>-w</td>
-<td>精确匹配单词</td>
-<td>grep -w “java” file</td>
-</tr>
-<tr>
-<td>-o</td>
-<td>仅输出匹配内容（非整行）</td>
-<td>grep -o “user_[0-9]*” file</td>
-</tr>
-<tr>
-<td>-A N</td>
-<td>显示匹配行及之后 N 行</td>
-<td>grep -A 3 “Exception” file</td>
-</tr>
-<tr>
-<td>-B N</td>
-<td>显示匹配行及之前 N 行</td>
-<td>grep -B 2 “segfault” file</td>
-</tr>
-<tr>
-<td>-C N</td>
-<td>显示匹配行及前后各 N 行</td>
-<td>grep -C 2 “timeout” file</td>
-</tr>
-</tbody></table>
-<h5 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h5><table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">说明</th>
-<th align="center">示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>.</code></td>
-<td align="center">匹配任意单个字符</td>
-<td align="center"><code>grep &quot;a.c&quot; file</code> → 匹配 “abc” “axc”</td>
-</tr>
-<tr>
-<td align="center"><code>^</code></td>
-<td align="center">匹配行首</td>
-<td align="center"><code>grep &quot;^start&quot; file</code></td>
-</tr>
-<tr>
-<td align="center"><code>$</code></td>
-<td align="center">匹配行尾</td>
-<td align="center"><code>grep &quot;end$&quot; file</code></td>
-</tr>
-<tr>
-<td align="center"><code>[abc]</code></td>
-<td align="center">匹配括号内任意字符</td>
-<td align="center"><code>grep &quot;[aeiou]&quot; file</code></td>
-</tr>
-<tr>
-<td align="center"><code>[^abc]</code></td>
-<td align="center">匹配不在括号内的字符</td>
-<td align="center"><code>grep &quot;[^0-9]&quot; file</code></td>
-</tr>
-<tr>
-<td align="center"><code>*</code></td>
-<td align="center">前一个字符重复0次或多次</td>
-<td align="center"><code>grep &quot;go*d&quot; file</code> → 匹配 “gd” “good”</td>
-</tr>
-</tbody></table>
-<p><strong>扩展正则表达式（</strong> **-**E <strong>或</strong> egrep <strong>）</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">符号</th>
-<th align="center">说明</th>
-<th align="center">示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>+</code></td>
-<td align="center">前一个字符重复1次或多次</td>
-<td align="center"><code>grep -E &quot;no+&quot; file</code> → 匹配 “no”, “nooo”</td>
-</tr>
-<tr>
-<td align="center"><code>?</code></td>
-<td align="center">前一个字符重复0次或1次</td>
-<td align="center"><code>grep -E &quot;colou?r&quot; file</code> → 匹配 “color”, “colour”</td>
-</tr>
-<tr>
-<td align="center"><code>&#123;n,m&#125;</code></td>
-<td align="center">前一个字符重复n到m次</td>
-<td align="center"><code>grep -E &quot;[0-9]&#123;3&#125;&quot; file</code> → 匹配3位数字</td>
-</tr>
-<tr>
-<td align="center">&#96;</td>
-<td align="center">&#96;</td>
-<td align="center">逻辑或</td>
-</tr>
-</tbody></table>
-<h5 id="6-5-find"><a href="#6-5-find" class="headerlink" title="6.5 find"></a>6.5 find</h5>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/30/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" data-id="cmdr3l2u90001oglte62k8ny0" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" data-id="cmdvck34h0001a8ltcvd61t9x" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -470,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" data-id="cmdr3l2ua0002oglt26ju5361" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" data-id="cmdvck34l0003a8lt6ru176de" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -531,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" data-id="cmdr3l2ua0003ogltbuq45y7w" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" data-id="cmdvck34i0002a8ltfdkibrwc" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -633,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" data-id="cmdr3l2u50000ogltbju39juq" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" data-id="cmdvck34c0000a8lt2orc7nh3" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -677,10 +436,6 @@
         
           <li>
             <a href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/30/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">(no title)</a>
           </li>
         
           <li>
