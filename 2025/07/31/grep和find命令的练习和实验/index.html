@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="grep和find命令的练习和实验1.实验环境准备将以下内容保存为 practice.txt ： 123456789101112# practice.txt2023-10-01 08:05:23 [INFO] User &#x27;admin&#x27; logged in from 192.168.1.1002023-10-01 08:06:45 [ERROR] Database connect">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="grep和find命令的练习和实验1.实验环境准备将以下内容保存为 practice.txt ： 123456789101112# practice.txt2023-10-01 08:05:23 [INFO] User &#x27;admin&#x27; logged in from 192.168.1.1002023-10-01 08:06:45 [ERROR] Database connect">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031509516.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031511758.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031512666.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031513500.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021819343.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250801151803047.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250801152023150.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021746479.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021747895.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/08011647228.png">
+<meta property="article:published_time" content="2025-07-31T08:27:11.428Z">
+<meta property="article:modified_time" content="2025-08-03T07:13:39.011Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031509516.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-grep和find命令的练习和实验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" class="article-date">
+  <time class="dt-published" datetime="2025-07-31T08:27:11.428Z" itemprop="datePublished">2025-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="grep和find命令的练习和实验"><a href="#grep和find命令的练习和实验" class="headerlink" title="grep和find命令的练习和实验"></a>grep和find命令的练习和实验</h3><h4 id="1-实验环境准备"><a href="#1-实验环境准备" class="headerlink" title="1.实验环境准备"></a>1.<strong>实验环境准备</strong></h4><p>将以下内容保存为 practice.txt ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># practice.txt</span><br><span class="line">2023-10-01 08:05:23 [INFO] User &#x27;admin&#x27; logged in from 192.168.1.100</span><br><span class="line">2023-10-01 08:06:45 [ERROR] Database connection failed (error code: 500)</span><br><span class="line">2023-10-01 08:07:11 [WARNING] Disk usage at 85% on /dev/sda1</span><br><span class="line">2023-10-01 08:08:00 [DEBUG] Request ID: 7X2G9P received from 10.0.0.55</span><br><span class="line">2023-10-01 08:09:34 [INFO] Payment processed: $150.00 via PayPal(user_john@example.com)</span><br><span class="line">2023-10-01 08:10:55 [ERROR] API timeout after 30s (endpoint: /api/v1/data)</span><br><span class="line">2023-10-01 08:11:23 [INFO] Backup completed: size=2.5GB,path=/backup/20231001</span><br><span class="line">2023-10-01 08:12:17 [WARNING] Memory usage at 90% (process: java)</span><br><span class="line">2023-10-01 08:13:45 [ERROR] Invalid input from 192.168.1.200: &quot;GET /invalid?query=*&quot;</span><br><span class="line">2023-10-01 08:14:00 [INFO] User &#x27;guest&#x27; logged out</span><br><span class="line">2023-10-01 08:14:00 [INFO] user_john@example.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-练习"><a href="#2-练习" class="headerlink" title="2.练习"></a>2.练习</h4><p>2.1：输出所有包含 “ERROR” 的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;ERROR&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031509516.png"></p>
+<p>2.2 ：忽略大小写匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i &quot;warning&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031511758.png" alt="image-20250803151118723"></p>
+<p>2.3 ：反向排除调试信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -v &quot;WARNING&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031512666.png" alt="image-20250803151206630"></p>
+<p>2.4 ：显示匹配行号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n &quot;INFO&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031513500.png" alt="image-20250803151300461"></p>
+<p>2.5 ： 统计错误次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -c &quot;ERROR&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021819343.png" alt="image-20250802181909296"></p>
+<p>2.6 ： 查看错误上下文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -C1 &quot;ERROR&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250801151803047.png"></p>
+<p>2.7 ： 匹配时间范围</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;^2023-10-01 08:1&quot; practice.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250801152023150.png"></p>
+<p>2.8 ： 提取 IP 地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep -Eo &quot;([0-9]&#123;1,3&#125;\.)&#123;3&#125;[0-9]&#123;1,3&#125;&quot; practice.txt</span><br><span class="line"># 输出所有 IP 地址，如 192.168.1.100</span><br><span class="line">192.168.x.x</span><br><span class="line">grep -E &quot;192\.168\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;&quot; test</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021746479.png"></p>
+<p>2.9 ： 精确匹配警告</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep -w &quot;java&quot; practice.txt</span><br><span class="line">\# 匹配 &quot;java&quot; 单词（避免匹配 &quot;javascript&quot;）</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021747895.png"></p>
+<p>2.10 ： 提取邮箱地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">grep -Eio &quot;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z]&#123;2,&#125;\b&quot; practice.txt</span><br><span class="line">#输出 user_john@example.com</span><br><span class="line">xxxxxxxx@xxx.</span><br><span class="line">&#123;1，&#125;</span><br><span class="line"> 允许字母、数字、.、-；</span><br><span class="line"> +：至少 1 次。</span><br><span class="line">\b</span><br><span class="line">单词边界，确保匹配的是独立邮箱（避免匹配 user@example.com.cn.xxx 中的部分）。</span><br><span class="line">-E拓展正则表达式</span><br><span class="line">-i忽略大小写</span><br><span class="line">-o仅匹配筛选内容</span><br><span class="line">grep -Eio &quot;\b[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+[A-Z]&#123;2,&#125;\b&quot; practice.txt</span><br><span class="line">user_john@example.com.cn</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/08011647228.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" data-id="cmdvci4sr0000q8lt7x5wf0um" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/07/30/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/30/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
