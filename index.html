@@ -1,501 +1,166 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="azyzl"><meta name="copyright" content="azyzl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:author" content="azyzl">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hexo",
+  "url": "http://example.com/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-07-31T08:27:11.428Z" title="Created 2025-07-31 16:27:11">2025-07-31</time></span></div><div class="content">grep和find命令的练习和实验1.实验环境准备将以下内容保存为 practice.txt ： 123456789101112# practice.txt2023-10-01 08:05:23 [INFO] User &#x27;admin&#x27; logged in from 192.168.1.1002023-10-01 08:06:45 [ERROR] Database connection failed (error code: 500)2023-10-01 08:07:11 [WARNING] Disk usage at 85% on /dev/sda12023-10-01 08:08:00 [DEBUG] Request ID: 7X2G9P received from 10.0.0.552023-10-01 08:09:34 [INFO] Payment processed: $150.00 via PayPal(user_john@example.com)2023-10-01 08:10:55 [ERROR] API timeout after 30s (e...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-07-30T08:09:24.731Z" title="Created 2025-07-30 16:09:24">2025-07-30</time></span></div><div class="content">Linux的文件目录结构常见的目录说明1. &#x2F;bin 和 &#x2F;sbin ：系统命令目录1.1 &#x2F;bin （存放二进制命令) ​	作用 : 存放普通用户和系统管理员都可使用的基础命令 ​	特点： ​		单用户模式（维护模式）下也可使用 ​		命令多为系统运行必需的核心工具 ​	常见命令： ​		&#x2F;bin&#x2F;ls ：	查看文件列表。 ​		&#x2F;bin&#x2F;cp ：	复制文件。 ​		&#x2F;bin&#x2F;date ：	显示系统时间 1.2 &#x2F;sbin （系统管理命令） ​	作用 : 存放需要管理员权限执行的系统管理命令。 ​	特点： ​		普通用户默认无权执行（需 sudo ）。 ​		命令多涉及系统配置和维护。 ​	常见命令： ​		&#x2F;sbin&#x2F;service ：管理系统服务（如启动&#x2F;停止服务）。 ​		&#x2F;sbin&#x2F;ifconfig ：查看或配置网络接口（已逐步被 ip 命令替代）。 ​		&#x2F;sbin&#x2F;reboot ：重启系统 2. &...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-07-28T12:20:07.170Z" title="Created 2025-07-28 20:20:07">2025-07-28</time></span></div><div class="content">配置picgo图床工具picgo 下载：Releases · Molunerfinn&#x2F;PicGo Typora 下载：Typora 官方中文站 1.Typora配置 打开偏好设置 点击图像，修改为如图所示配置  2.创建新仓库用于存放图片创建新仓库  新仓库名为Pictures  3.生成tokensGithub头像-&gt;Settings-&gt;Developer Settings-&gt;Personal access tokens-&gt;Tokens(classic)-&gt;Generate new access Token(classic) 点击Generate token注意这里的token只会出现一次，最好复制后在微信发给自己 4.配置picgo打开软件，图床设置-&gt;Github，填写配置信息，点击确定并设为默认图床 图床名称	默认仓库名	your-username&#x2F;blog-images分支名	main 或 master，看你的仓库设置Token	填入 GitHub 生成的 Token存储路径（可选）	img&#x2F;（上传到该目...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-07-28T02:42:57.214Z" title="Created 2025-07-28 10:42:57">2025-07-28</time></span></div><div class="content">Hexo个人博客搭建教程工具1.nodejs下载连接：https://nodejs.org/zh-cn/download 2.git下载链接：https://git-scm.com/downloads 3.hexowin+R打开命令行，用管理员运行 1npm install hexo-cli -g	  新建blog文件夹，右键选择open git bash here  输入 1hexo init blog  运行完成后关闭，在生成的文件中再次打开open git bash here 输入 1npm install  下载完成后，再输入 1hexo g  作用为将 Hexo 项目中的 Markdown 文章、主题配置等源文件编译生成静态网页文件（HTML&#x2F;CSS&#x2F;JS），输出到public目录 1hexo s  作用为启动本地 Web 服务器，默认端口 4000，通过 http://localhost:4000实时预览博客效果 这样就可以在本机上查看网站  4.把项目加载到github首先注册&#x2F;登入Github点击Create a new reposi...</div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">azyzl</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" title="Untitled">Untitled</a><time datetime="2025-07-31T08:27:11.428Z" title="Created 2025-07-31 16:27:11">2025-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Untitled">Untitled</a><time datetime="2025-07-30T08:09:24.731Z" title="Created 2025-07-30 16:09:24">2025-07-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" title="Untitled">Untitled</a><time datetime="2025-07-28T12:20:07.170Z" title="Created 2025-07-28 20:20:07">2025-07-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" title="Untitled">Untitled</a><time datetime="2025-07-28T02:42:57.214Z" title="Created 2025-07-28 10:42:57">2025-07-28</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-grep和find命令的练习和实验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" class="article-date">
-  <time class="dt-published" datetime="2025-07-31T08:27:11.428Z" itemprop="datePublished">2025-07-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <h3 id="grep和find命令的练习和实验"><a href="#grep和find命令的练习和实验" class="headerlink" title="grep和find命令的练习和实验"></a>grep和find命令的练习和实验</h3><h4 id="1-实验环境准备"><a href="#1-实验环境准备" class="headerlink" title="1.实验环境准备"></a>1.<strong>实验环境准备</strong></h4><p>将以下内容保存为 practice.txt ：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># practice.txt</span><br><span class="line">2023-10-01 08:05:23 [INFO] User &#x27;admin&#x27; logged in from 192.168.1.100</span><br><span class="line">2023-10-01 08:06:45 [ERROR] Database connection failed (error code: 500)</span><br><span class="line">2023-10-01 08:07:11 [WARNING] Disk usage at 85% on /dev/sda1</span><br><span class="line">2023-10-01 08:08:00 [DEBUG] Request ID: 7X2G9P received from 10.0.0.55</span><br><span class="line">2023-10-01 08:09:34 [INFO] Payment processed: $150.00 via PayPal(user_john@example.com)</span><br><span class="line">2023-10-01 08:10:55 [ERROR] API timeout after 30s (endpoint: /api/v1/data)</span><br><span class="line">2023-10-01 08:11:23 [INFO] Backup completed: size=2.5GB,path=/backup/20231001</span><br><span class="line">2023-10-01 08:12:17 [WARNING] Memory usage at 90% (process: java)</span><br><span class="line">2023-10-01 08:13:45 [ERROR] Invalid input from 192.168.1.200: &quot;GET /invalid?query=*&quot;</span><br><span class="line">2023-10-01 08:14:00 [INFO] User &#x27;guest&#x27; logged out</span><br><span class="line">2023-10-01 08:14:00 [INFO] user_john@example.com</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-练习"><a href="#2-练习" class="headerlink" title="2.练习"></a>2.练习</h4><p>2.1：输出所有包含 “ERROR” 的行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;ERROR&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031509516.png"></p>
-<p>2.2 ：忽略大小写匹配</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i &quot;warning&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031511758.png" alt="image-20250803151118723"></p>
-<p>2.3 ：反向排除调试信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -v &quot;WARNING&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031512666.png" alt="image-20250803151206630"></p>
-<p>2.4 ：显示匹配行号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n &quot;INFO&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508031513500.png" alt="image-20250803151300461"></p>
-<p>2.5 ： 统计错误次数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -c &quot;ERROR&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021819343.png" alt="image-20250802181909296"></p>
-<p>2.6 ： 查看错误上下文</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -C1 &quot;ERROR&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250801151803047.png"></p>
-<p>2.7 ： 匹配时间范围</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;^2023-10-01 08:1&quot; practice.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250801152023150.png"></p>
-<p>2.8 ： 提取 IP 地址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep -Eo &quot;([0-9]&#123;1,3&#125;\.)&#123;3&#125;[0-9]&#123;1,3&#125;&quot; practice.txt</span><br><span class="line"># 输出所有 IP 地址，如 192.168.1.100</span><br><span class="line">192.168.x.x</span><br><span class="line">grep -E &quot;192\.168\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;&quot; test</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021746479.png"></p>
-<p>2.9 ： 精确匹配警告</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep -w &quot;java&quot; practice.txt</span><br><span class="line">\# 匹配 &quot;java&quot; 单词（避免匹配 &quot;javascript&quot;）</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/202508021747895.png"></p>
-<p>2.10 ： 提取邮箱地址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">grep -Eio &quot;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z]&#123;2,&#125;\b&quot; practice.txt</span><br><span class="line">#输出 user_john@example.com</span><br><span class="line">xxxxxxxx@xxx.</span><br><span class="line">&#123;1，&#125;</span><br><span class="line"> 允许字母、数字、.、-；</span><br><span class="line"> +：至少 1 次。</span><br><span class="line">\b</span><br><span class="line">单词边界，确保匹配的是独立邮箱（避免匹配 user@example.com.cn.xxx 中的部分）。</span><br><span class="line">-E拓展正则表达式</span><br><span class="line">-i忽略大小写</span><br><span class="line">-o仅匹配筛选内容</span><br><span class="line">grep -Eio &quot;\b[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+[A-Z]&#123;2,&#125;\b&quot; practice.txt</span><br><span class="line">user_john@example.com.cn</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/08011647228.png"></p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              July 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" data-id="cmdwjal3r000284lt169867lk" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux的文件目录结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" class="article-date">
-  <time class="dt-published" datetime="2025-07-30T08:09:24.731Z" itemprop="datePublished">2025-07-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Linux的文件目录结构"><a href="#Linux的文件目录结构" class="headerlink" title="Linux的文件目录结构"></a>Linux的文件目录结构</h2><h4 id="常见的目录说明"><a href="#常见的目录说明" class="headerlink" title="常见的目录说明"></a>常见的目录说明</h4><h4 id="1-bin-和-sbin-：系统命令目录"><a href="#1-bin-和-sbin-：系统命令目录" class="headerlink" title="1. &#x2F;bin 和 &#x2F;sbin ：系统命令目录"></a>1. &#x2F;bin 和 &#x2F;sbin ：系统命令目录</h4><p>1.1 &#x2F;bin （存放二进制命令)</p>
-<p>​	作用 : 存放普通用户和系统管理员都可使用的基础命令</p>
-<p>​	特点：</p>
-<p>​		单用户模式（维护模式）下也可使用</p>
-<p>​		命令多为系统运行必需的核心工具</p>
-<p>​	常见命令：</p>
-<p>​		&#x2F;bin&#x2F;ls ：	查看文件列表。</p>
-<p>​		&#x2F;bin&#x2F;cp ：	复制文件。</p>
-<p>​		&#x2F;bin&#x2F;date ：	显示系统时间</p>
-<p>1.2 &#x2F;sbin （系统管理命令）</p>
-<p>​	作用 : 存放需要管理员权限执行的系统管理命令。</p>
-<p>​	特点：</p>
-<p>​		普通用户默认无权执行（需 sudo ）。</p>
-<p>​		命令多涉及系统配置和维护。</p>
-<p>​	常见命令：</p>
-<p>​		&#x2F;sbin&#x2F;service ：管理系统服务（如启动&#x2F;停止服务）。</p>
-<p>​		&#x2F;sbin&#x2F;ifconfig ：查看或配置网络接口（已逐步被 ip 命令替代）。</p>
-<p>​		&#x2F;sbin&#x2F;reboot ：重启系统</p>
-<h4 id="2-dev-：设备文件目录"><a href="#2-dev-：设备文件目录" class="headerlink" title="2. &#x2F;dev ：设备文件目录"></a>2. &#x2F;dev ：设备文件目录</h4><p>​	作用：管理所有硬件设备和虚拟设备（详见之前回答）。</p>
-<p>​	示例：</p>
-<p>​		硬盘设备：</p>
-<p>​			&#x2F;dev&#x2F;sda ：第一块 SATA&#x2F;SCSI 硬盘。</p>
-<p>​			&#x2F;dev&#x2F;sda1 ：第一块硬盘的第一个分区。</p>
-<p>​		虚拟设备：</p>
-<p>​			&#x2F;dev&#x2F;null ：空设备(丢弃所有输入)</p>
-<p>​			&#x2F;dev&#x2F;random ：随机数生成器</p>
-<h4 id="3-root-和-home-：用户家目录"><a href="#3-root-和-home-：用户家目录" class="headerlink" title="3.&#x2F;root 和 &#x2F;home ：用户家目录"></a>3.&#x2F;root 和 &#x2F;home ：用户家目录</h4><p>3.1 &#x2F;root</p>
-<p>​	作用：<strong>超级用户</strong>（root）的家目录。</p>
-<p>​	特点：</p>
-<p>​		默认只有 root 用户可访问。</p>
-<p>​		存放 root 的配置文件（如 .bashrc ）。</p>
-<p>3.2 &#x2F;home</p>
-<p>​	作用：存放<strong>普通用户</strong>的家目录。</p>
-<p>​	特点：</p>
-<p>​		每个用户对应一个子目录（如 &#x2F;home&#x2F;student ）。</p>
-<p>​		用户对其家目录有完全控制权</p>
-<h4 id="4-tmp-和-var-：动态数据目录"><a href="#4-tmp-和-var-：动态数据目录" class="headerlink" title="4.&#x2F;tmp 和 &#x2F;var ：动态数据目录"></a>4.&#x2F;tmp 和 &#x2F;var ：动态数据目录</h4><p>4.1 &#x2F;tmp</p>
-<p>​	作用：存放临时文件（进程或用户手动创建）。</p>
-<p>​	特点：</p>
-<p>​		全局可读写（权限为 drwxrwxrwt ）。</p>
-<p>​		系统重启或定期清理时会自动删除文件。<br>4.2 &#x2F;var</p>
-<p>​	作用：存放运行时可变数据（如日志、数据库、邮件）。</p>
-<p>​	常见子目录：</p>
-<p>​		&#x2F;var&#x2F;log ：系统和服务日志（如 syslog 、 nginx&#x2F;access.log ）。</p>
-<p>​		&#x2F;var&#x2F;lib ：应用程序数据（如 MySQL 数据库 &#x2F;var&#x2F;lib&#x2F;mysql ）。</p>
-<p>​		&#x2F;var&#x2F;spool ：队列数据（如邮件队列 &#x2F;var&#x2F;spool&#x2F;mail ）。</p>
-<p>​		&#x2F;var&#x2F;log&#x2F;secure ：安全认证日志（如 SSH 登录记录）。</p>
-<p>​		&#x2F;var&#x2F;log&#x2F;messages ：核心系统日志（替代通用 syslog）</p>
-<h4 id="5-etc-：系统配置目录"><a href="#5-etc-：系统配置目录" class="headerlink" title="5.&#x2F;etc ：系统配置目录"></a>5.&#x2F;etc ：系统配置目录</h4><p>​	作用：存放系统和应用程序的配置文件。</p>
-<p>​	关键文件示例：</p>
-<p>​		&#x2F;etc&#x2F;passwd ：用户账户信息。</p>
-<p>​		CentOS 特有路径：</p>
-<p>​			网络配置：&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens160</p>
-<p>​			SELinux 配置：&#x2F;etc&#x2F;selinux&#x2F;config</p>
-<p>​			YUM&#x2F;DNF 配置：&#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo</p>
-<p>注意：修改配置文件后，通常需重启服务生效。</p>
-<h4 id="6-usr-和-usr-local-：系统资源目录"><a href="#6-usr-和-usr-local-：系统资源目录" class="headerlink" title="6.&#x2F;usr 和 &#x2F;usr&#x2F;local ：系统资源目录"></a>6.&#x2F;usr 和 &#x2F;usr&#x2F;local ：系统资源目录</h4><p>6.1 &#x2F;usr</p>
-<p>​	作用：存放系统核心程序、库和文档（类似 C:\Windows ）。</p>
-<p>​	子目录：</p>
-<p>​		&#x2F;usr&#x2F;bin ：用户命令（如 gcc 、 python ）。</p>
-<p>​		&#x2F;usr&#x2F;lib ：库文件（如 .so 动态库）。</p>
-<p>​		&#x2F;usr&#x2F;share ：共享数据（如文档、时区文件）。</p>
-<p>6.2 &#x2F;usr&#x2F;local</p>
-<p>​	作用：存放用户手动编译安装的软件（类似 C:\Program Files ）。</p>
-<p>​	特点：避免与系统包管理器（如 apt 、 yum ）安装的软件冲突</p>
-<h4 id="7-boot-：系统启动目录"><a href="#7-boot-：系统启动目录" class="headerlink" title="7.&#x2F;boot ：系统启动目录"></a>7.&#x2F;boot ：系统启动目录</h4><p>​	作用：存放启动引导文件。s</p>
-<p>​	关键文件：</p>
-<p>​		vmlinuz-* ：Linux 内核文件。</p>
-<p>​		initrd.img-* ：初始内存盘镜像。</p>
-<p>​		&#x2F;boot&#x2F;grub ：GRUB 引导程序配置</p>
-<p>警告：误删此目录文件可能导致系统无法启动</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" data-id="cmdwjal3i000084lt36jccfu9" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-配置picgo图床" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" class="article-date">
-  <time class="dt-published" datetime="2025-07-28T12:20:07.170Z" itemprop="datePublished">2025-07-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="配置picgo图床"><a href="#配置picgo图床" class="headerlink" title="配置picgo图床"></a>配置picgo图床</h2><h5 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h5><p>picgo</p>
-<p>下载：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">Releases · Molunerfinn&#x2F;PicGo</a></p>
-<p>Typora</p>
-<p>下载：<a target="_blank" rel="noopener" href="https://typoraio.cn/">Typora 官方中文站</a></p>
-<h5 id="1-Typora配置"><a href="#1-Typora配置" class="headerlink" title="1.Typora配置"></a>1.Typora配置</h5><p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728215227847.png"></p>
-<p>打开偏好设置</p>
-<p>点击图像，修改为如图所示配置</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728215339040.png"></p>
-<h5 id="2-创建新仓库用于存放图片"><a href="#2-创建新仓库用于存放图片" class="headerlink" title="2.创建新仓库用于存放图片"></a>2.创建新仓库用于存放图片</h5><p>创建新仓库</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728214442233.png"></p>
-<p>新仓库名为Pictures</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728220259905.png"></p>
-<h5 id="3-生成tokens"><a href="#3-生成tokens" class="headerlink" title="3.生成tokens"></a>3.生成tokens</h5><p>Github头像-&gt;Settings-&gt;Developer Settings-&gt;Personal access tokens-&gt;Tokens(classic)-&gt;Generate new access Token(classic)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250729112552105.png">点击<code>Generate token</code>注意这里的token只会出现一次，最好复制后在微信发给自己</p>
-<h5 id="4-配置picgo"><a href="#4-配置picgo" class="headerlink" title="4.配置picgo"></a>4.配置picgo</h5><p>打开软件，<code>图床设置-&gt;Github</code>，填写配置信息，点击确定并<code>设为默认图床</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728220814292.png"><br>图床名称	默认<br>仓库名	your-username&#x2F;blog-images<br>分支名	main 或 master，看你的仓库设置<br>Token	填入 GitHub 生成的 Token<br>存储路径（可选）	img&#x2F;（上传到该目录)<br>自定义域名	<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/[github%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]@main">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main</a></p>
-<p>PS：</p>
-<h5 id="坑点1：自定义域名不要用"><a href="#坑点1：自定义域名不要用" class="headerlink" title="坑点1：自定义域名不要用"></a>坑点1：自定义域名不要用</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/用户名/仓库名@分支名</span><br></pre></td></tr></table></figure>
-
-<p>很慢</p>
-<p>接下来安装picgo-plugin-github-plus插件</p>
-<p>因为PicGo使用时，只能上传，删除图片时Github仓库无法同步删除，所以要在<code>插件设置</code>安装这个插件。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728221549749.png"></p>
-<p>再进入图床设置-&gt;GithubPlus中配置，和上面配github一样</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728221759052.png"></p>
-<h5 id="5-链接测试"><a href="#5-链接测试" class="headerlink" title="5.链接测试"></a>5.链接测试</h5><p>打开Typora之前配置图像的地方</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728221927073.png"></p>
-<p>点击验证图片上传选项</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728222552053.png"></p>
-<p>这样是正常的</p>
-<p>PS：</p>
-<p>坑点2：在上传图片是尽量把加速器关闭，否则会因为证书不对上传失败</p>
-<p>这样就完成了配置，使用时将截图复制进md文件，然后去picgo的相册复制图片地址，替换掉原本的地址，这样就可以在Hexo博客上显示图片</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/" data-id="cmdwjal3s000384ltgl3me9eg" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Hexo个人博客搭建教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2025-07-28T02:42:57.214Z" itemprop="datePublished">2025-07-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Hexo个人博客搭建教程"><a href="#Hexo个人博客搭建教程" class="headerlink" title="Hexo个人博客搭建教程"></a>Hexo个人博客搭建教程</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="1-nodejs"><a href="#1-nodejs" class="headerlink" title="1.nodejs"></a>1.nodejs</h3><p>下载连接：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">https://nodejs.org/zh-cn/download</a></p>
-<h3 id="2-git"><a href="#2-git" class="headerlink" title="2.git"></a>2.git</h3><p>下载链接：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
-<h3 id="3-hexo"><a href="#3-hexo" class="headerlink" title="3.hexo"></a>3.hexo</h3><p>win+R打开命令行，用管理员运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g	</span><br></pre></td></tr></table></figure>
-
-<p>新建blog文件夹，右键选择open git bash here</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728104421283_compressed.png"></p>
-<p>输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-
-<p>运行完成后关闭，在生成的文件中再次打开open git bash here</p>
-<p>输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>下载完成后，再输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>作用为将 Hexo 项目中的 Markdown 文章、主题配置等源文件编译生成静态网页文件（HTML&#x2F;CSS&#x2F;JS），输出到public目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>作用为启动本地 Web 服务器，默认端口 <code>4000</code>，通过 <code>http://localhost:4000</code>实时预览博客效果</p>
-<p>这样就可以在本机上查看网站</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728123932639.png"></p>
-<h3 id="4-把项目加载到github"><a href="#4-把项目加载到github" class="headerlink" title="4.把项目加载到github"></a>4.把项目加载到github</h3><h5 id="首先注册-登入Github"><a href="#首先注册-登入Github" class="headerlink" title="首先注册&#x2F;登入Github"></a>首先注册&#x2F;登入<a target="_blank" rel="noopener" href="https://github.com/">Github</a></h5><p>点击Create a new repository进入新建仓库页面</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728214442233.png"></p>
-<p>仓库名输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名.github.io</span><br></pre></td></tr></table></figure>
-
-<p>勾选 Public</p>
-<p>勾选 Add a README file</p>
-<p>拉到下面点击create创建</p>
-<h5 id="生成SSH-Keys"><a href="#生成SSH-Keys" class="headerlink" title="生成SSH Keys"></a>生成SSH Keys</h5><p>进入任意文件夹，右键空白处然后点Git bash here,输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
-
-<p>然后进入C:\Users\用户名，在里面进入.ssh文件</p>
-<p>用记事本打开里面的id_rsa.pub,全选复制里面的代码</p>
-<p>然后打开github</p>
-<p>进入用户设置</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250729105220769.png" alt="image-20250729105220769"></p>
-<p>找到SSH keys</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250729105242714.png" alt="image-20250729105242714"></p>
-<p>新建SSH keys，名称随意，在下面粘贴代码，</p>
-<p>然后创建</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728152404869.png"></p>
-<h5 id="上线博客"><a href="#上线博客" class="headerlink" title="上线博客"></a>上线博客</h5><p>进入之前的Blog文件夹，用记事本打开_config.yml</p>
-<p>拉到最下面将deploy后面的全删掉，复制粘贴这段</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git</span><br><span class="line">repository: </span><br><span class="line">branch: main</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意缩进格式：每行前面都有两个空格不要删，每个冒号后面都有个空格也不要删！</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728214636761.png"></p>
-<p>去github之前生成的仓库页面，点code，复制https链接</p>
-<p>将其粘贴到我们记事本中的<code>repository：</code>后面</p>
-<p>然后保存退出</p>
-<p>回到博客文件夹，git bash</p>
-<p>安装自动部署发布工具</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728154202154.png"></p>
-<p>如果是第一次使用git的话会需要配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br><span class="line">git config --global user.name &quot;你的名字&quot;</span><br></pre></td></tr></table></figure>
-
-<p>配置完后</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>上传</p>
-<p>在跳出来的窗口内进行登录</p>
-<p>然后依次输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g（生成静态文件）</span><br><span class="line">hexo d（将静态文件上传到github）</span><br></pre></td></tr></table></figure>
-
-<p>上传完成后访问<a target="_blank" rel="noopener" href="https://azyzlazyzl.github.io/">Hexo</a></p>
-<p>成功了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/azyzlazyzl/Pictures@main/img/image-20250728123932639.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" data-id="cmdwjal3r000184lt4xfn3rbg" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/07/31/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/30/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/28/%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E5%BA%8A/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/28/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">4</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-04T03:23:25.845Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By azyzl</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
