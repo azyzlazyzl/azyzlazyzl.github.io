@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux常用命令详解 | azyzl的博客站</title><meta name="author" content="azyzl"><meta name="copyright" content="azyzl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Linux常用命令详解1.touch - 创建空文件用途：创建新文件或更新文件时间戳。 语法： 1touch 文件名  示例： 12touch file.txt 				#创建空文件touch file1.txt file2.txt 	#批量创建  2.mkdir - 创建目录用途：创建新目录。 语法： 1mkdir [选项] 目录名   示例： 12mkdir dir1 			#创建单层目录mk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令详解">
+<meta property="og:url" content="http://example.com/2025/08/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="azyzl的博客站">
+<meta property="og:description" content="Linux常用命令详解1.touch - 创建空文件用途：创建新文件或更新文件时间戳。 语法： 1touch 文件名  示例： 12touch file.txt 				#创建空文件touch file1.txt file2.txt 	#批量创建  2.mkdir - 创建目录用途：创建新目录。 语法： 1mkdir [选项] 目录名   示例： 12mkdir dir1 			#创建单层目录mk">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-08-04T08:31:29.000Z">
+<meta property="article:modified_time" content="2025-08-04T08:36:32.486Z">
+<meta property="article:author" content="azyzl">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Linux常用命令详解",
+  "url": "http://example.com/2025/08/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2025-08-04T08:31:29.000Z",
+  "dateModified": "2025-08-04T08:36:32.486Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "azyzl",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/08/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux常用命令详解',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">azyzl的博客站</span></a><a class="nav-page-title" href="/"><span class="site-name">Linux常用命令详解</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Linux常用命令详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-04T08:31:29.000Z" title="发表于 2025-08-04 16:31:29">2025-08-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-04T08:36:32.486Z" title="更新于 2025-08-04 16:36:32">2025-08-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Linux常用命令详解"><a href="#Linux常用命令详解" class="headerlink" title="Linux常用命令详解"></a>Linux常用命令详解</h2><h5 id="1-touch-创建空文件"><a href="#1-touch-创建空文件" class="headerlink" title="1.touch - 创建空文件"></a>1.touch - 创建空文件</h5><p>用途：创建新文件或更新文件时间戳。</p>
+<p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> 文件名</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> file.txt 				<span class="comment">#创建空文件</span></span><br><span class="line"><span class="built_in">touch</span> file1.txt file2.txt 	<span class="comment">#批量创建</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-mkdir-创建目录"><a href="#2-mkdir-创建目录" class="headerlink" title="2.mkdir - 创建目录"></a>2.mkdir - 创建目录</h5><p>用途：创建新目录。</p>
+<p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> [选项] 目录名</span><br></pre></td></tr></table></figure>
+
+
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 			<span class="comment">#创建单层目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p dir1/dir2 	<span class="comment">#递归创建嵌套目录（自动补全父目录）</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-rm-删除文件或目录"><a href="#3-rm-删除文件或目录" class="headerlink" title="3.rm - 删除文件或目录"></a>3.rm - 删除文件或目录</h5><p>用途：删除文件或目录（慎用！）。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [选项] 文件或目录</span><br></pre></td></tr></table></figure>
+
+
+<p>常用选项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> file.txt 		<span class="comment">#删除文件</span></span><br><span class="line"><span class="built_in">rm</span> -r <span class="built_in">dir</span>/			<span class="comment">#递归删除目录及其内容</span></span><br><span class="line"><span class="built_in">rm</span> -f file.txt 		<span class="comment">#强制删除（不提示确认）</span></span><br></pre></td></tr></table></figure>
+
+<p>警告： rm -rf &#x2F; 会删除整个系统，切勿尝试</p>
+<h5 id="4-cp-复制文件或目录"><a href="#4-cp-复制文件或目录" class="headerlink" title="4.cp - 复制文件或目录"></a>4.cp - 复制文件或目录</h5><p>用途：复制文件或目录到指定位置。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [选项] 源文件 目标路径</span><br></pre></td></tr></table></figure>
+
+<p>常用选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp file.txt backup/ 	#复制文件到目录</span><br><span class="line">cp -r dir1/ dir2/ 		#递归复制目录</span><br><span class="line">cp -f dir1 dir2 		#强制复制</span><br><span class="line">cp -i file.txt backup/ 	#覆盖前提示确</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-mv-移动或重命名文件"><a href="#5-mv-移动或重命名文件" class="headerlink" title="5.mv - 移动或重命名文件"></a>5.mv - 移动或重命名文件</h5><p>用途：移动文件或目录，或修改名称</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 源文件 目标路径或名称</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv old.txt new.txt 		#重命名文件</span><br><span class="line">mv file.txt /backup/ 	#移动文件到目录</span><br></pre></td></tr></table></figure>
+
+<h5 id="6-查询命令-cat-less-tail-grep-find-（这四个命令都是对文件内容进行查询）"><a href="#6-查询命令-cat-less-tail-grep-find-（这四个命令都是对文件内容进行查询）" class="headerlink" title="6.查询命令 - cat less tail grep find （这四个命令都是对文件内容进行查询）"></a>6.查询命令 - cat less tail grep find （这四个命令都是对文件内容进行查询）</h5><h5 id="6-1-cat"><a href="#6-1-cat" class="headerlink" title="6.1 cat"></a>6.1 cat</h5><p>用途：用于快速查看、合并或创建文件内容。适合小文件，直接将内容输出到终端，无交互功能</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat filename 					#查看文件内容</span><br><span class="line">cat file1 file2 				#同时显示多个文件内容</span><br><span class="line">cat file1 file2 &gt; merged_file	#合并文件</span><br><span class="line">cat file1 &gt;&gt; file2 				#将file1内容追加到file2末尾</span><br></pre></td></tr></table></figure>
+
+<p>常用选项</p>
+<p>-n：显示行号（包括空行）</p>
+<p>-b：显示行号（忽略空行）</p>
+<p>-s：压缩连续空行为一行</p>
+<p>-E：在行尾显示 $ 符号</p>
+<h5 id="6-2-less"><a href="#6-2-less" class="headerlink" title="6.2  less"></a>6.2  less</h5><p>用途：提供用户交互式地滚动浏览文件，在 less 环境下，可以使用方向键或 Page Up&#x2F;Page Down 键来滚动浏</p>
+<p>览文件，按 q 键可以退出</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less filename</span><br></pre></td></tr></table></figure>
+
+<p>常用选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-N：显示行号</span><br><span class="line">-m：显示更详细的提示信息 （进度%）</span><br><span class="line">-E：在文件结束后自动退出</span><br><span class="line">-S：禁用自动换</span><br></pre></td></tr></table></figure>
+
+<p>高级技巧</p>
+<p>使用 less命令 来看cat -n 命令的输出 （管道符号的应用）</p>
+<p>所以我们利用 cat 和 less 的特点 将两个命令结合使用 用到了 管道符号“|”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">less 查看文件是从头查看 q退出查看 上线箭头可以逐行滚动</span><br><span class="line">[root@localhost test5]# cat -n /etc/passwd | less</span><br><span class="line">管道符号的作用：前一条命令的输出 作为后一条命令的输入</span><br></pre></td></tr></table></figure>
+
+<p>搜索内容</p>
+<p>在 less 中，可以使用 &#x2F; 字符后接搜索模式来向前搜索内容，或者使用 ? 后接搜索模式来向后</p>
+<p>搜索内容。例如，要在文件中搜索 “example”，可以输入 &#x2F;example 并按回车键。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>查看多个文件</p>
+<p>less 可以同时打开多个文件。只需要在命令行中列出所有的文件名即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less file1 file2 file3</span><br></pre></td></tr></table></figure>
+
+<p>在 less 中，可以使用 :n 命令跳转到下一个文件，使用 :p 命令跳转到上一个文件。</p>
+<h5 id="6-3-tail"><a href="#6-3-tail" class="headerlink" title="6.3 tail"></a>6.3 tail</h5><p>用途：用于查看文件末尾内容，默认显示最后10行。常用于实时监控日志更新。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tail filename 		#显示文件最后10行</span><br><span class="line">tail -n 20 filename #显示最后20行</span><br></pre></td></tr></table></figure>
+
+<p>常用选项</p>
+<p>-n : 指定显示的行数</p>
+<p>-f  : 实时追踪文件变化（常用于监控日志）</p>
+<h5 id="6-4-grep"><a href="#6-4-grep" class="headerlink" title="6.4 grep"></a>6.4 grep</h5><p>用途：grep<strong>（Global Regular Expression Print）</strong>是 Linux 中强大的文本搜索工具，支持正则表达式，用于在文件或输入流中按模式匹配并输出符合条件的行。</p>
+<p>核心功能：快速过滤、定位文本内容。</p>
+<p>典型场景：日志分析、配置文件搜索、代码审查等</p>
+<p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [选项] &quot;搜索模式&quot; 文件名或目录</span><br></pre></td></tr></table></figure>
+
+<p>搜索模式：可以是普通字符串或正则表达式。</p>
+<p>支持多文件：可同时搜索多个文件或目录</p>
+<h5 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h5><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>忽略大小写</td>
+<td>grep -i “error” file</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>反向匹配（排除模式）</td>
+<td>grep -v “debug” file</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>显示匹配行的行号</td>
+<td>grep -n “warning” file</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>统计匹配行数</td>
+<td>grep -c “404” file</td>
+</tr>
+<tr>
+<td>-r &#x2F; -R</td>
+<td>递归搜索目录</td>
+<td>grep -r “config” &#x2F;etc&#x2F;</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>精确匹配单词</td>
+<td>grep -w “java” file</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>仅输出匹配内容（非整行）</td>
+<td>grep -o “user_[0-9]*” file</td>
+</tr>
+<tr>
+<td>-A N</td>
+<td>显示匹配行及之后 N 行</td>
+<td>grep -A 3 “Exception” file</td>
+</tr>
+<tr>
+<td>-B N</td>
+<td>显示匹配行及之前 N 行</td>
+<td>grep -B 2 “segfault” file</td>
+</tr>
+<tr>
+<td>-C N</td>
+<td>显示匹配行及前后各 N 行</td>
+<td>grep -C 2 “timeout” file</td>
+</tr>
+</tbody></table>
+<h5 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h5><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">说明</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>.</code></td>
+<td align="center">匹配任意单个字符</td>
+<td align="center"><code>grep &quot;a.c&quot; file</code> → 匹配 “abc” “axc”</td>
+</tr>
+<tr>
+<td align="center"><code>^</code></td>
+<td align="center">匹配行首</td>
+<td align="center"><code>grep &quot;^start&quot; file</code></td>
+</tr>
+<tr>
+<td align="center"><code>$</code></td>
+<td align="center">匹配行尾</td>
+<td align="center"><code>grep &quot;end$&quot; file</code></td>
+</tr>
+<tr>
+<td align="center"><code>[abc]</code></td>
+<td align="center">匹配括号内任意字符</td>
+<td align="center"><code>grep &quot;[aeiou]&quot; file</code></td>
+</tr>
+<tr>
+<td align="center"><code>[^abc]</code></td>
+<td align="center">匹配不在括号内的字符</td>
+<td align="center"><code>grep &quot;[^0-9]&quot; file</code></td>
+</tr>
+<tr>
+<td align="center"><code>*</code></td>
+<td align="center">前一个字符重复0次或多次</td>
+<td align="center"><code>grep &quot;go*d&quot; file</code> → 匹配 “gd” “good”</td>
+</tr>
+</tbody></table>
+<p><strong>扩展正则表达式（</strong> **-**E <strong>或</strong> egrep <strong>）</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">说明</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>+</code></td>
+<td align="center">前一个字符重复1次或多次</td>
+<td align="center"><code>grep -E &quot;no+&quot; file</code> → 匹配 “no”, “nooo”</td>
+</tr>
+<tr>
+<td align="center"><code>?</code></td>
+<td align="center">前一个字符重复0次或1次</td>
+<td align="center"><code>grep -E &quot;colou?r&quot; file</code> → 匹配 “color”, “colour”</td>
+</tr>
+<tr>
+<td align="center"><code>&#123;n,m&#125;</code></td>
+<td align="center">前一个字符重复n到m次</td>
+<td align="center"><code>grep -E &quot;[0-9]&#123;3&#125;&quot; file</code> → 匹配3位数字</td>
+</tr>
+<tr>
+<td align="center">&#96;</td>
+<td align="center">&#96;</td>
+<td align="center">逻辑或</td>
+</tr>
+</tbody></table>
+<h5 id="6-5-find"><a href="#6-5-find" class="headerlink" title="6.5 find"></a>6.5 find</h5><p>基础语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [搜索路径] [匹配条件] [执行动作]</span><br></pre></td></tr></table></figure>
+
+<p><strong>搜索路径</strong>：默认为当前目录（ . ），可指定绝对或相对路径</p>
+<p><strong>匹配条件</strong>：按名称、类型、大小、时间等条件过滤文件</p>
+<p><strong>执行动作</strong>：对匹配文件执行操作（如删除、输出路径）</p>
+<h5 id="常用匹配条件"><a href="#常用匹配条件" class="headerlink" title="常用匹配条件"></a><strong>常用匹配条件</strong></h5><h6 id="按名称或路径匹配"><a href="#按名称或路径匹配" class="headerlink" title="按名称或路径匹配"></a>按名称或路径匹配</h6><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-name</code></td>
+<td>按文件名匹配（区分大小写）</td>
+<td><code>find . -name &quot;*.txt&quot;</code></td>
+</tr>
+<tr>
+<td><code>-iname</code></td>
+<td>按文件名匹配（不区分大小写）</td>
+<td><code>find . -iname &quot;README&quot;</code></td>
+</tr>
+<tr>
+<td><code>-path</code></td>
+<td>按路径匹配</td>
+<td><code>find /var -path &quot;*/log/*&quot;</code></td>
+</tr>
+</tbody></table>
+<h6 id="按文件类型匹配"><a href="#按文件类型匹配" class="headerlink" title="按文件类型匹配"></a>按文件类型匹配</h6><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-type f</code></td>
+<td>仅匹配普通文件</td>
+<td><code>find . -type f</code></td>
+</tr>
+<tr>
+<td><code>-type d</code></td>
+<td>仅匹配目录</td>
+<td><code>find /etc -type d</code></td>
+</tr>
+<tr>
+<td><code>-type l</code></td>
+<td>仅匹配符号链接</td>
+<td><code>find . -type l</code></td>
+</tr>
+</tbody></table>
+<h6 id="按文件大小匹配"><a href="#按文件大小匹配" class="headerlink" title="按文件大小匹配"></a>按文件大小匹配</h6><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-size +10M</code></td>
+<td>大于10MB的文件</td>
+<td><code>find . -size +10M</code></td>
+</tr>
+<tr>
+<td><code>-size -1G</code></td>
+<td>小于1GB的文件</td>
+<td><code>find /var -size -1G</code></td>
+</tr>
+<tr>
+<td><code>-size 0</code></td>
+<td>空文件</td>
+<td><code>find . -size 0</code></td>
+</tr>
+</tbody></table>
+<h6 id="按时间戳匹配"><a href="#按时间戳匹配" class="headerlink" title="按时间戳匹配"></a>按时间戳匹配</h6><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-mtime -7</code></td>
+<td>7天内修改过的文件</td>
+<td><code>find . -mtime -7</code></td>
+</tr>
+<tr>
+<td><code>-atime +30</code></td>
+<td>30天前访问过的文件</td>
+<td><code>find /home -atime +30</code></td>
+</tr>
+<tr>
+<td><code>-newer file</code></td>
+<td>比指定文件更新的文件</td>
+<td><code>find . -newer reference.txt</code></td>
+</tr>
+</tbody></table>
+<h6 id="按权限匹配"><a href="#按权限匹配" class="headerlink" title="按权限匹配"></a>按权限匹配</h6><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-perm 644</code></td>
+<td>权限精确为644的文件</td>
+<td><code>find . -perm 644</code></td>
+</tr>
+<tr>
+<td><code>-perm /u=x</code></td>
+<td>用户有执行权限的文件</td>
+<td><code>find /bin -perm /u=x</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h5><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-a</code> (隐含)</td>
+<td>逻辑与（多个条件同时满足）</td>
+<td><code>find . -name &quot;*.log&quot; -size +1M</code></td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td>逻辑或</td>
+<td><code>find . -name &quot;*.jpg&quot; -o -name &quot;*.png&quot;</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>逻辑非</td>
+<td><code>find . ! -name &quot;*.tmp&quot;</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="执行动作"><a href="#执行动作" class="headerlink" title="执行动作"></a>执行动作</h5><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-print</code></td>
+<td>输出文件路径（默认动作）</td>
+<td><code>find . -name &quot;*.txt&quot; -print</code></td>
+</tr>
+<tr>
+<td><code>-delete</code></td>
+<td>删除匹配的文件</td>
+<td><code>find . -name &quot;*.bak&quot; -delete</code></td>
+</tr>
+<tr>
+<td><code>-exec</code></td>
+<td>执行自定义命令</td>
+<td><code>find . -name &quot;*.log&quot; -exec rm &#123;&#125; \;</code></td>
+</tr>
+<tr>
+<td><code>-ok</code></td>
+<td>交互式执行命令（需确认）</td>
+<td><code>find . -name &quot;*.tmp&quot; -ok rm &#123;&#125; \;</code></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">azyzl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/08/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">http://example.com/2025/08/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">azyzl的博客站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/08/04/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" title="Hexo个人博客搭建教程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hexo个人博客搭建教程</div></div><div class="info-2"><div class="info-item-1">Hexo个人博客搭建教程工具1.nodejs下载连接：https://nodejs.org/zh-cn/download 2.git下载链接：https://git-scm.com/downloads 3.hexowin+R打开命令行，用管理员运行 1npm install hexo-cli -g	  新建blog文件夹，右键选择open git bash here  输入 1hexo init blog  运行完成后关闭，在生成的文件中再次打开open git bash here 输入 1npm install  下载完成后，再输入 1hexo g  作用为将 Hexo 项目中的 Markdown 文章、主题配置等源文件编译生成静态网页文件（HTML&#x2F;CSS&#x2F;JS），输出到public目录 1hexo s  作用为启动本地 Web 服务器，默认端口 4000，通过 http://localhost:4000实时预览博客效果 这样就可以在本机上查看网站  4.把项目加载到github首先注册&#x2F;登入Github点击Create a new reposi...</div></div></div></a><a class="pagination-related  no-desc" href="/2025/08/04/Apache%E9%85%8D%E7%BD%AE/" title="Apache配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Apache配置</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/08/04/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" title="grep和find命令的练习和实验"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-04</div><div class="info-item-2">grep和find命令的练习和实验</div></div><div class="info-2"><div class="info-item-1">grep和find命令的练习和实验1.实验环境准备将以下内容保存为 practice.txt ： 123456789101112# practice.txt2023-10-01 08:05:23 [INFO] User &#x27;admin&#x27; logged in from 192.168.1.1002023-10-01 08:06:45 [ERROR] Database connection failed (error code: 500)2023-10-01 08:07:11 [WARNING] Disk usage at 85% on /dev/sda12023-10-01 08:08:00 [DEBUG] Request ID: 7X2G9P received from 10.0.0.552023-10-01 08:09:34 [INFO] Payment processed: $150.00 via PayPal(user_john@example.com)2023-10-01 08:10:55 [ERROR] API timeout after 30s (e...</div></div></div></a><a class="pagination-related" href="/2025/08/04/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux的文件目录结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-04</div><div class="info-item-2">Linux的文件目录结构</div></div><div class="info-2"><div class="info-item-1">Linux的文件目录结构常见的目录说明1. &#x2F;bin 和 &#x2F;sbin ：系统命令目录1.1 &#x2F;bin （存放二进制命令) ​	作用 : 存放普通用户和系统管理员都可使用的基础命令 ​	特点： ​		单用户模式（维护模式）下也可使用 ​		命令多为系统运行必需的核心工具 ​	常见命令： ​		&#x2F;bin&#x2F;ls ：	查看文件列表。 ​		&#x2F;bin&#x2F;cp ：	复制文件。 ​		&#x2F;bin&#x2F;date ：	显示系统时间 1.2 &#x2F;sbin （系统管理命令） ​	作用 : 存放需要管理员权限执行的系统管理命令。 ​	特点： ​		普通用户默认无权执行（需 sudo ）。 ​		命令多涉及系统配置和维护。 ​	常见命令： ​		&#x2F;sbin&#x2F;service ：管理系统服务（如启动&#x2F;停止服务）。 ​		&#x2F;sbin&#x2F;ifconfig ：查看或配置网络接口（已逐步被 ip 命令替代）。 ​		&#x2F;sbin&#x2F;reboot ：重启系统 2. &...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">azyzl</div><div class="author-info-description">一杯敬明天，一杯敬过往</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">Linux常用命令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-touch-%E5%88%9B%E5%BB%BA%E7%A9%BA%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1.touch - 创建空文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-mkdir-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2.mkdir - 创建目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-rm-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">3.rm - 删除文件或目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-cp-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">4.cp - 复制文件或目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-mv-%E7%A7%BB%E5%8A%A8%E6%88%96%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">5.mv - 移动或重命名文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4-cat-less-tail-grep-find-%EF%BC%88%E8%BF%99%E5%9B%9B%E4%B8%AA%E5%91%BD%E4%BB%A4%E9%83%BD%E6%98%AF%E5%AF%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%9F%A5%E8%AF%A2%EF%BC%89"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">6.查询命令 - cat less tail grep find （这四个命令都是对文件内容进行查询）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-cat"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">6.1 cat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-less"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">6.2  less</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-tail"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">6.3 tail</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-grep"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">6.4 grep</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">常用选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-5-find"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">6.5 find</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8C%B9%E9%85%8D%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.0.0.14.</span> <span class="toc-text">常用匹配条件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%89%E5%90%8D%E7%A7%B0%E6%88%96%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D"><span class="toc-number">1.0.0.14.1.</span> <span class="toc-text">按名称或路径匹配</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%89%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E5%8C%B9%E9%85%8D"><span class="toc-number">1.0.0.14.2.</span> <span class="toc-text">按文件类型匹配</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%89%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%8C%B9%E9%85%8D"><span class="toc-number">1.0.0.14.3.</span> <span class="toc-text">按文件大小匹配</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%89%E6%97%B6%E9%97%B4%E6%88%B3%E5%8C%B9%E9%85%8D"><span class="toc-number">1.0.0.14.4.</span> <span class="toc-text">按时间戳匹配</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%89%E6%9D%83%E9%99%90%E5%8C%B9%E9%85%8D"><span class="toc-number">1.0.0.14.5.</span> <span class="toc-text">按权限匹配</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">1.0.0.15.</span> <span class="toc-text">逻辑操作符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%8A%A8%E4%BD%9C"><span class="toc-number">1.0.0.16.</span> <span class="toc-text">执行动作</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/04/Apache%E9%85%8D%E7%BD%AE/" title="Apache配置">Apache配置</a><time datetime="2025-08-04T08:31:29.000Z" title="发表于 2025-08-04 16:31:29">2025-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="Linux常用命令详解">Linux常用命令详解</a><time datetime="2025-08-04T08:31:29.000Z" title="发表于 2025-08-04 16:31:29">2025-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/04/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" title="Hexo个人博客搭建教程">Hexo个人博客搭建教程</a><time datetime="2025-08-04T08:31:29.000Z" title="发表于 2025-08-04 16:31:29">2025-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/04/grep%E5%92%8Cfind%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%83%E4%B9%A0%E5%92%8C%E5%AE%9E%E9%AA%8C/" title="grep和find命令的练习和实验">grep和find命令的练习和实验</a><time datetime="2025-08-04T08:31:29.000Z" title="发表于 2025-08-04 16:31:29">2025-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/04/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux的文件目录结构">Linux的文件目录结构</a><time datetime="2025-08-04T08:31:29.000Z" title="发表于 2025-08-04 16:31:29">2025-08-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By azyzl</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
